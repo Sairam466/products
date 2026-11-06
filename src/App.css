@@ -1,71 +1,40 @@
-:root {
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #172033;
-  background: #eef2f7;
-}
-
+:root { color: #17211b; background: #f4f1ea; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
 * { box-sizing: border-box; }
-
-body { margin: 0; min-width: 320px; }
-
-.app-container {
-  width: min(100% - 2rem, 1120px);
-  margin: 2rem auto;
-  padding: clamp(1.25rem, 3vw, 2.5rem);
-  background: #f8fafc;
-  border: 1px solid #dbe3ee;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(38, 61, 91, 0.12);
-}
-
-.store-header { margin-bottom: 1.75rem; }
-.eyebrow { margin: 0 0 .5rem; color: #2874f0; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-.store-header h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 2.7rem); letter-spacing: -.04em; }
-.store-subtitle { margin: .55rem 0 0; color: #667085; }
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-  gap: 1rem;
-}
-
-.product-card {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  min-width: 0;
-  padding: .9rem;
-  border: 1px solid #dbe3ee;
-  border-radius: 16px;
-  background: #fff;
-  text-align: left;
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-
-.product-card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(38, 61, 91, .12); }
-.product-card img { width: 100%; height: 210px; object-fit: cover; border-radius: 11px; background: #eef2f7; }
-.product-card h2 { margin: .9rem 0 .25rem; font-size: 1.05rem; }
-.product-card p { margin: 0; color: #475467; font-weight: 700; }
-
-.product-button {
-  width: 100%;
-  margin-top: 1rem;
-  padding: .7rem 1rem;
-  border: 0;
-  border-radius: 10px;
-  background: #2874f0;
-  color: #fff;
-  cursor: pointer;
-  font-weight: 700;
-}
-.product-button:hover { background: #1f5fc9; }
-.product-button:focus-visible, .remove-button:focus-visible { outline: 3px solid #9cc0ff; outline-offset: 2px; }
-
-.cart-container { margin-top: 1.5rem; padding: 1.25rem; border: 1px solid #dbe3ee; border-radius: 16px; background: #fff; }
-.remove-button { color: #d32f2f; font-weight: 700; cursor: pointer; }
-
-@media (max-width: 520px) {
-  .app-container { width: min(100% - 1rem, 1120px); margin: .5rem auto; padding: 1rem; border-radius: 14px; }
-  .product-card img { height: 180px; }
-}
-
+body { margin: 0; min-width: 320px; background: #f4f1ea; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+.app-container { max-width: 1180px; margin: 0 auto; padding: 48px 24px 72px; }
+.store-header { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 40px; }
+.eyebrow, .product-category { margin: 0; color: #8a5a32; text-transform: uppercase; letter-spacing: .14em; font-size: .72rem; font-weight: 700; }
+.store-header h1 { margin: 10px 0 8px; font-family: Georgia, serif; font-size: clamp(2.7rem, 7vw, 5.8rem); line-height: .95; letter-spacing: -.06em; font-weight: 500; }
+.store-subtitle { margin: 0; color: #667067; font-size: 1.05rem; }
+.product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.product-card { overflow: hidden; border: 1px solid #dedbd1; border-radius: 18px; background: #fffdf8; box-shadow: 0 12px 30px rgba(45, 44, 35, .06); }
+.product-image { display: block; width: 100%; height: 210px; object-fit: cover; background: #e9e5dc; }
+.product-details { padding: 18px; }
+.product-details h2 { margin: 7px 0 5px; font: 500 1.35rem Georgia, serif; }
+.product-description { min-height: 42px; margin: 0 0 18px; color: #667067; font-size: .9rem; line-height: 1.45; }
+.product-footer, .cart-heading, .cart-total { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.product-footer strong { font-size: 1.1rem; }
+.product-button, .checkout-button { border: 0; border-radius: 999px; padding: 10px 15px; color: #fffdf8; background: #243c2d; font-weight: 700; transition: background .2s, transform .2s; }
+.product-button:hover, .checkout-button:hover { background: #3d654b; transform: translateY(-1px); }
+.product-button:disabled, .checkout-button:disabled { cursor: not-allowed; opacity: .5; transform: none; }
+.cart-panel { max-width: 780px; margin: 34px auto 0; padding: 24px; border: 1px solid #dedbd1; border-radius: 18px; background: #fffdf8; box-shadow: 0 12px 30px rgba(45, 44, 35, .06); }
+.cart-heading { align-items: flex-start; padding-bottom: 18px; border-bottom: 1px solid #e5e1d7; }
+.cart-heading h2 { margin: 7px 0 0; font: 500 1.9rem Georgia, serif; }
+.cart-count { color: #667067; font-size: .85rem; }
+.empty-cart, .status-message { margin: 24px 0 4px; color: #667067; }
+.status-message.error { color: #a33e32; }
+.cart-items { display: grid; gap: 10px; padding: 18px 0; }
+.cart-item { display: grid; grid-template-columns: 48px 1fr auto auto; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid #eeeae2; }
+.cart-item img { width: 48px; height: 48px; border-radius: 10px; object-fit: cover; }
+.cart-item strong { font-size: .9rem; }
+.remove-button { border: 0; padding: 4px; color: #a33e32; background: transparent; font-size: .78rem; }
+.cart-total { padding: 16px 0; border-top: 1px solid #e5e1d7; font-size: 1.1rem; }
+.checkout-form { display: grid; grid-template-columns: 1fr 1fr auto; align-items: end; gap: 12px; }
+.checkout-form label { display: grid; gap: 6px; color: #667067; font-size: .78rem; font-weight: 700; }
+.checkout-form input { width: 100%; border: 1px solid #d8d5ca; border-radius: 9px; padding: 10px 11px; color: #17211b; background: #fff; }
+.checkout-form input:focus { outline: 2px solid #8a5a32; outline-offset: 1px; }
+.checkout-status { grid-column: 1 / -1; margin: 4px 0 0; color: #3d654b; font-size: .88rem; }
+@media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .app-container { padding: 32px 16px 48px; } .product-grid { grid-template-columns: 1fr; } .checkout-form { grid-template-columns: 1fr; } .checkout-button { width: 100%; } .cart-item { grid-template-columns: 42px 1fr auto; } .cart-item .remove-button { grid-column: 2 / -1; justify-self: start; } }

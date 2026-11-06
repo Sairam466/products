@@ -6,5 +6,6 @@ export default defineConfig({
   plugins: [react()],
   server: {
     allowedHosts: ['sb-2av9xzhhabrr.vercel.run'],
+    proxy: { '/api': 'http://localhost:8787' },
   },
 })
